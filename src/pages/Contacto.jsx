@@ -20,6 +20,10 @@ const Contacto = () => {
     terminos: '',
   });
 
+    /**
+   * Recibe el nombre del campo (`name`) y su valor actual (`value`).
+   * Retorna un mensaje de error si el valor no es válido; de lo contrario, retorna una cadena vacía.
+   */
   const validateField = (name, value) => {
     switch (name) {
       case 'nombreCompleto':
@@ -28,7 +32,6 @@ const Contacto = () => {
         return !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(value)  ? 'Ingresa un correo válido.' : '';
       case 'telefono':
         return !/^\d{9}$/.test(value) ? 'El teléfono debe contener 9 dígitos numéricos.' : '';
-    
       case 'sexo':
         return value === '' ? 'Por favor selecciona tu sexo.' : '';
       case 'mensaje':
@@ -40,6 +43,7 @@ const Contacto = () => {
     }
   };
 
+   //Actualiza los valores en el estado `formData` y valida el campo modificado.
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     const inputValue = type === 'checkbox' ? checked : value;
@@ -54,7 +58,9 @@ const Contacto = () => {
       [name]: validateField(name, inputValue),
     });
   };
+  
 
+  // Valida todos los campos antes de enviar y detiene el envío si hay errores.
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -65,11 +71,13 @@ const Contacto = () => {
 
     setErrors(newErrors);
 
+    // Si alguno de los campos tiene errores, detiene el envío
+
     if (Object.values(newErrors).some((error) => error !== '')) {
       return;
     }
 
-    console.log('Datos enviados:', formData);
+    // Si no hay errores, se procesan los datos (aquí se puede enviar a un servidor, por ejemplo)
     alert('¡Formulario enviado con éxito!');
   };
 
