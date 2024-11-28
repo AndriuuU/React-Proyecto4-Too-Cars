@@ -1,12 +1,17 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
+//import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
 
-import { router } from './router/router.jsx'
-import { RouterProvider } from 'react-router-dom'
+import { router } from "./router/router";
+import { RouterProvider } from "react-router-dom";
+import UserProvider from "./context/UserContext"; // Default export del proveedor
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-      <RouterProvider router={router} />
-  </StrictMode>,
-)
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+    
+    //<React.StrictMode>
+    <UserProvider>
+        <RouterProvider router={router} />
+    </UserProvider>
+
+);
