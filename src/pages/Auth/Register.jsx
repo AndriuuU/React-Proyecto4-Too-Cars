@@ -1,8 +1,6 @@
-// src/pages/Auth/Register.jsx
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { auth, createUserWithEmailAndPassword } from "../../config/firebase";
 import "./Auth.css";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [formValues, setFormValues] = useState({
@@ -14,9 +12,6 @@ const Register = () => {
   });
 
   const [formErrors, setFormErrors] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate();
 
   // Manejador para actualizar valores del formulario
   const handleChange = (e) => {
@@ -30,6 +25,7 @@ const Register = () => {
   // Validar cada campo al salir del foco
   const handleBlur = (e) => {
     const { name, value } = e.target;
+
     let error = "";
 
     if (name === "email" && (!value.includes("@") || !value.includes("."))) {
@@ -55,26 +51,9 @@ const Register = () => {
     setFormErrors({ ...formErrors, [name]: error });
   };
 
-  // Verifica si la fecha de nacimiento cumple con el requisito de edad mínima
-  const isValidAge = (birthDate) => {
-    const today = new Date();
-    const birthDateObj = new Date(birthDate);
-    const age = today.getFullYear() - birthDateObj.getFullYear();
-    const monthDifference = today.getMonth() - birthDateObj.getMonth();
-    const dayDifference = today.getDate() - birthDateObj.getDate();
-
-    // Ajustar la edad si el mes/día actual es anterior al mes/día de nacimiento
-    if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
-      return age - 1 >= 16;
-    }
-
-    return age >= 16;
-  };
-
-  // Manejador de envío del formulario (registro en Firebase)
-  const handleSubmit = async (e) => {
+  // Validar todos los campos al enviar
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setErrorMessage(""); // Reseteamos el mensaje de error antes de intentar el registro
 
     const errors = {};
 
@@ -94,26 +73,33 @@ const Register = () => {
     setFormErrors(errors);
 
     if (Object.keys(errors).length === 0) {
-      setLoading(true); // Mostrar el estado de carga
-
-      try {
-        // Registrando al usuario en Firebase
-        await createUserWithEmailAndPassword(auth, formValues.email, formValues.password);
-        alert("Registro exitoso");
-        navigate("/menu");
-      } catch (error) {
-        setErrorMessage(error.message); 
-      } finally {
-        setLoading(false);
-      }
+      alert("Registro exitoso");
     }
+  };
+
+  // Verifica si la fecha de nacimiento cumple con el requisito de edad mínima
+  const isValidAge = (birthDate) => {
+    const today = new Date();
+    const birthDateObj = new Date(birthDate);
+    const age = today.getFullYear() - birthDateObj.getFullYear();
+    const monthDifference = today.getMonth() - birthDateObj.getMonth();
+    const dayDifference = today.getDate() - birthDateObj.getDate();
+
+    // Ajustar la edad si el mes/día actual es anterior al mes/día de nacimiento
+    if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+      return age - 1 >= 16;
+    }
+
+    return age >= 16;
   };
 
   return (
     <div className="auth-container">
       <div className="auth-tabs">
         <div className="auth-tab active">REGISTRAR</div>
-        <Link to="/login" className="auth-tab">ACCEDER</Link>
+        <Link to="/login" className="auth-tab">
+    ACCEDER
+  </Link>
       </div>
       <form onSubmit={handleSubmit} className="auth-form">
         <label>
@@ -137,7 +123,9 @@ const Register = () => {
             onBlur={handleBlur}
           />
         </label>
-        {formErrors.birthDate && <p className="error-message">{formErrors.birthDate}</p>}
+        {formErrors.birthDate && (
+          <p className="error-message">{formErrors.birthDate}</p>
+        )}
 
         <label>
           <input
@@ -149,7 +137,9 @@ const Register = () => {
             onBlur={handleBlur}
           />
         </label>
-        {formErrors.password && <p className="error-message">{formErrors.password}</p>}
+        {formErrors.password && (
+          <p className="error-message">{formErrors.password}</p>
+        )}
 
         <label>
           <input
@@ -161,7 +151,10 @@ const Register = () => {
             onBlur={handleBlur}
           />
         </label>
-        {formErrors.confirmPassword && <p className="error-message">{formErrors.confirmPassword}</p>}
+        {formErrors.confirmPassword && (
+          <p className="error-message">{formErrors.confirmPassword}</p>
+        )}
+      
 
         <label className="checkbox-container">
           <input
@@ -173,13 +166,13 @@ const Register = () => {
           />
           Aceptar políticas
         </label>
-        {formErrors.acceptPolicies && <p className="error-message">{formErrors.acceptPolicies}</p>}
+        {formErrors.acceptPolicies && (
+          <p className="error-message">{formErrors.acceptPolicies}</p>
+        )}
 
-        <button type="submit" className="auth-button" disabled={loading}>
-          {loading ? "Registrando..." : "REGISTRAR"}
+        <button type="submit" className="auth-button">
+          REGISTRAR
         </button>
-
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
 
         <p className="auth-footer">
           ¿Ya tienes cuenta? <Link to="/login">Iniciar sesión</Link>
