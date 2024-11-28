@@ -3,7 +3,7 @@
 
 ## Descripción del Proyecto
 
-Este proyecto tiene como objetivo desarrollar una aplicación web que permita a los usuarios registrarse, iniciar sesión y acceder a un área privada con información personalizada. La aplicación está construida con React, utiliza Firebase para la autenticación de usuarios y comunica con una API para gestionar datos adicionales.
+En esta parte del proyecto tiene como objetivo permita a los usuarios registrarse, iniciar sesión y acceder a un área privada con información personalizada. La aplicación está construida con React, utiliza Firebase para la autenticación de usuarios y comunica con una API para gestionar datos adicionales.
 
 ### Tecnologías utilizadas:
 - **Frontend:** React, React Router, JSX, CSS
@@ -110,24 +110,20 @@ export const UserProvider = ({ children }) => {
 
 ## Integración de la API
 
-En este proyecto, también se integró una API para la gestión de recursos (por ejemplo, obtener información adicional sobre los usuarios, manejar los datos de la aplicación, etc.). Esta API se consume de manera asíncrona utilizando `fetch` o bibliotecas como `axios` para realizar solicitudes HTTP.
+En este proyecto, también se integró una API para la gestión de recursos. Esta API se consume de manera asíncrona utilizando `fetch` o bibliotecas como `axios` para realizar solicitudes HTTP.
 
 ### Comunicación Asíncrona con la API
 
 La comunicación con la API se maneja de forma asíncrona utilizando funciones `async/await` en combinación con `fetch`. A continuación se muestra un ejemplo de cómo obtener datos de la API:
 
 ```javascript
-const fetchData = async () => {
-  try {
-    const response = await fetch('https://api.ejemplo.com/usuarios');
-    if (!response.ok) {
-      throw new Error("Error al obtener los datos");
-    }
-    const data = await response.json();
-    console.log(data);
-  } catch (error) {
-    console.error("Error en la solicitud:", error);
+export const loaderMenu = async () => {
+  const response = await fetch(`https://www.freetestapi.com/api/v1/cars`);
+  if (!response.ok) {
+    throw new Error(`Error: ${response.statusText}`);
   }
+  const data = await response.json();
+  return data;
 };
 ```
 

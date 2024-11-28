@@ -86,6 +86,7 @@ export const loaderMenu = async () => {
   return data;
 };
 
+//tengo un filtro por si hay elementos repetidos
 const filterCars = (cars) => {
   const seenTitles = new Set();
   return cars.filter((car) => {
