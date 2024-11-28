@@ -1,22 +1,34 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Inicio.jsx";
-import Menu, { loaderMenu } from "../pages/Menu";
-import Coche, { loaderCoche } from "../pages/Coche";
-import Contacto from "../pages/Contacto.jsx";
 import Login from "../pages/Auth/Login.jsx";
 import Register from "../pages/Auth/Register.jsx";
 import Error404 from "../pages/Error404";
 import Layout from "../layouts/Layout";
+import LayoutPrivado from "../layouts/LayoutPrivado";  // LayoutPrivado para rutas protegidas
+import Favoritos from "../pages/Favoritos.jsx";  // Página de Favoritos
+import Menu, { loaderMenu } from "../pages/Menu.jsx";
+import Coche, { loaderCoche } from "../pages/Coche.jsx";
+import Contacto from "../pages/Contacto.jsx";
+
+
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <Layout />,  // Layout para las páginas públicas
     errorElement: <Error404 />,
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <Home />,  // Página principal
+      },
+      {
+        path: "/login",  // Ruta de login
+        element: <Login />,
+      },
+      {
+        path: "/register",  // Ruta de registro
+        element: <Register />,
       },
       {
         path: "/menu",
@@ -32,13 +44,15 @@ export const router = createBrowserRouter([
         path: "/contacto",
         element: <Contacto />,
       },
+    ],
+  },
+  {
+    path: "/", 
+    element: <LayoutPrivado />,  
+    children: [
       {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
+        path: "/favoritos",  
+        element: <Favoritos />,  
       },
     ],
   },
