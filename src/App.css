@@ -40,3 +40,18 @@
 .read-the-docs {
   color: #888;
 }
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;  /* Esto asegura que la altura del contenedor principal sea igual al 100% de la ventana */
+}
+
+.content {
+  flex: 1;  /* Esto asegura que el contenido se expanda y empuje el footer hacia abajo si el contenido es pequeño */
+}

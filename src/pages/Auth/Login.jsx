@@ -1,48 +1,61 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { auth } from "../../config/Firebase.jsx"; // Asegúrate de importar tu configuración de Firebase
-import { signInWithEmailAndPassword } from "firebase/auth";
-import "./Auth.css";
+import { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { auth } from "../../config/firebase.jsx"
+import { signInWithEmailAndPassword } from "firebase/auth"
+import Notification from "../../components/Notification" // Importa el componente
+
+import "./Auth.css"
 
 const Login = () => {
-  
   const [formValues, setFormValues] = useState({
     email: "",
     password: "",
-  });
-
-  const [formErrors, setFormErrors] = useState({});
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-
+  })
+  const [notification, setNotification] = useState({ message: "", type: "" })
+  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormValues({ ...formValues, [name]: value });
-  };
+    const { name, value } = e.target
+    setFormValues({ ...formValues, [name]: value })
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setFormErrors({}); // Limpiar errores previos
-
-    if (!formValues.email || !formValues.password) {
-      setFormErrors({ general: "Todos los campos son obligatorios" });
-      return;
-    }
+    e.preventDefault()
 
     try {
-      setLoading(true);
-      await signInWithEmailAndPassword(auth, formValues.email, formValues.password);
-      navigate("/menu");
-      setLoading(false);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        formValues.email,
+        formValues.password
+      )
+
+      if (!userCredential.user.emailVerified) {
+        setNotification({
+          message: "Por favor, verifica tu correo electrónico antes de continuar.",
+          type: "error",
+        })
+        return
+      }
+
+      navigate("/menu")
     } catch (error) {
-      setLoading(false);
-      setFormErrors({ general: "Correo o contraseña incorrectos" });
+      console.log(error)
+      setNotification({
+        message: "Error al iniciar sesión. Verifica tus credenciales.",
+        type: "error",
+      })
     }
-  };
+  }
 
   return (
     <div className="auth-container">
+      <Notification
+        message={notification.message}
+        type={notification.type}
+        onClose={() => setNotification({ message: "", type: "" })}
+      />
+
       <div className="auth-tabs">
         <Link className="auth-tab" to="/register">
           REGISTRAR
@@ -70,10 +83,6 @@ const Login = () => {
           />
         </label>
 
-        {formErrors.general && (
-          <p className="error-message">{formErrors.general}</p>
-        )}
-
         <button type="submit" className="auth-button" disabled={loading}>
           {loading ? "Accediendo..." : "ACCEDER"}
         </button>
@@ -83,7 +92,7 @@ const Login = () => {
         </p>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

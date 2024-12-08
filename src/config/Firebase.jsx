@@ -1,13 +1,10 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 //import { getAnalytics } from "firebase/analytics";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, sendEmailVerification } from "firebase/auth";
+import { updateProfile, updateEmail, deleteUser } from "firebase/auth";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyDa6nEl-INsedjU7bHTndBxWb8R2wF4cMQ",
   authDomain: "too-cars.firebaseapp.com",
@@ -36,3 +33,19 @@ export const registro = ({email, password}) => {
 
 //Logout
 export const logOut = () => signOut(auth)
+
+
+//ajustes
+export const updateUserProfile = async (user, displayName, email) => {
+  if (displayName) {
+    await updateProfile(user, { displayName });
+  }
+  if (email) {
+    await updateEmail(user, email);
+    await sendEmailVerification(user); // Envía el correo de verificación al nuevo email
+  }
+};
+
+export const deleteUserAccount = async (user) => {
+  await deleteUser(user);
+};

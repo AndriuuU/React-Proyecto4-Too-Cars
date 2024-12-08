@@ -1,24 +1,21 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
+import PrivateNavbar from "../components/PrivateNavbar";
+import Footer from "../components/footer";
 
 const LayoutPrivado = () => {
   const { user } = useContext(UserContext);
 
   return (
-    <div>
-      <h1>Layout Privado</h1>
-      {
-        // Si el usuario está logueado, muestra el contenido (Outlet)
-        user ? (
-          <Outlet />
-        ) : (
-          // Si no está logueado, redirige al login
-          <Navigate to="/login" />
-        )
-      }
-    </div>
-  );
+    <div className="private-layout">
+    <PrivateNavbar />
+    <main className="content">
+      <Outlet />
+    </main>
+    <Footer/>
+  </div>
+);
 };
 
 export default LayoutPrivado;

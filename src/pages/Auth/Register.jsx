@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Auth.css";
-import { Link } from "react-router-dom";
+import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import { auth } from "../../config/firebase";
+import Notification from "../../components/Notification";
 
 const Register = () => {
   const [formValues, setFormValues] = useState({
@@ -12,8 +15,10 @@ const Register = () => {
   });
 
   const [formErrors, setFormErrors] = useState({});
+  const [notification, setNotification] = useState({ message: "", type: "" });
 
-  // Manejador para actualizar valores del formulario
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormValues({
@@ -22,7 +27,6 @@ const Register = () => {
     });
   };
 
-  // Validar cada campo al salir del foco
   const handleBlur = (e) => {
     const { name, value } = e.target;
 
@@ -51,8 +55,7 @@ const Register = () => {
     setFormErrors({ ...formErrors, [name]: error });
   };
 
-  // Validar todos los campos al enviar
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const errors = {};
@@ -73,11 +76,44 @@ const Register = () => {
     setFormErrors(errors);
 
     if (Object.keys(errors).length === 0) {
-      alert("Registro exitoso");
+      try {
+        // Crear usuario con Firebase
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          formValues.email,
+          formValues.password
+        );
+
+        // Enviar correo de verificación
+        await sendEmailVerification(userCredential.user);
+        setNotification({
+          message: "Registro exitoso. Verifica tu correo electrónico.",
+          type: "success",
+        });
+
+        // Redirigir después de unos segundos
+        setTimeout(() => {
+          setNotification({ message: "", type: "" });
+          navigate("/login");
+        }, 3000);
+      } catch (error) {
+        console.error("Error al registrar en Firebase:", error);
+        setNotification({
+          message: "Error al registrar el usuario. Intente nuevamente.",
+          type: "error",
+        });
+
+        setTimeout(() => setNotification({ message: "", type: "" }), 3000);
+      }
+    } else {
+      setNotification({
+        message: "Corrige los errores antes de continuar.",
+        type: "error",
+      });
+      setTimeout(() => setNotification({ message: "", type: "" }), 3000);
     }
   };
 
-  // Verifica si la fecha de nacimiento cumple con el requisito de edad mínima
   const isValidAge = (birthDate) => {
     const today = new Date();
     const birthDateObj = new Date(birthDate);
@@ -85,7 +121,6 @@ const Register = () => {
     const monthDifference = today.getMonth() - birthDateObj.getMonth();
     const dayDifference = today.getDate() - birthDateObj.getDate();
 
-    // Ajustar la edad si el mes/día actual es anterior al mes/día de nacimiento
     if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
       return age - 1 >= 16;
     }
@@ -95,11 +130,16 @@ const Register = () => {
 
   return (
     <div className="auth-container">
+        <Notification
+        message={notification.message}
+        type={notification.type}
+        onClose={() => setNotification({ message: "", type: "" })}
+      />
       <div className="auth-tabs">
         <div className="auth-tab active">REGISTRAR</div>
         <Link to="/login" className="auth-tab">
-    ACCEDER
-  </Link>
+          ACCEDER
+        </Link>
       </div>
       <form onSubmit={handleSubmit} className="auth-form">
         <label>
@@ -154,7 +194,6 @@ const Register = () => {
         {formErrors.confirmPassword && (
           <p className="error-message">{formErrors.confirmPassword}</p>
         )}
-      
 
         <label className="checkbox-container">
           <input

@@ -7,8 +7,11 @@ import Layout from "../layouts/Layout";
 import LayoutPrivado from "../layouts/LayoutPrivado";  // LayoutPrivado para rutas protegidas
 import Favoritos from "../pages/Favoritos.jsx";  // Página de Favoritos
 import Menu, { loaderMenu } from "../pages/Menu.jsx";
-import Coche, { loaderCoche } from "../pages/Coche.jsx";
+import Coche from "../pages/Coche.jsx";
 import Contacto from "../pages/Contacto.jsx";
+import { loaderCoche } from "../pages/loaderCoche"; // Nuevo import del loader
+import UserSettings from "../pages/UserSettings.jsx";
+
 
 
 
@@ -53,6 +56,10 @@ export const router = createBrowserRouter([
       {
         path: "/favoritos",  
         element: <Favoritos />,  
+      },
+      {
+        path: "/ajustes",
+        element: <UserSettings />,
       },
     ],
   },
