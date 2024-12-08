@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Auth.css";
 import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
-import { auth } from "../../config/firebase";
+import { auth } from "../../config/Firebase";
 import Notification from "../../components/Notification";
 
 const Register = () => {

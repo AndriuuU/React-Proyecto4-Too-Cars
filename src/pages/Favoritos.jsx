@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Card from "../components/Card"; // Asegúrate de que tu componente Card esté correctamente importado
-import "./menu.css"; // Asegúrate de que el archivo CSS sea el correcto
+import Card from "../components/Card"; 
+import "./menu.css"; 
 
 const Favoritos = () => {
-  const [favorites, setFavorites] = useState([]); // Lista de favoritos
-  const [currentPage, setCurrentPage] = useState(1); // Página actual
-  const carsPerPage = 15; // Número de coches por página (puedes ajustarlo si lo necesitas)
+  const [favorites, setFavorites] = useState([]); 
+  const [currentPage, setCurrentPage] = useState(1); 
+  const carsPerPage = 15; 
   const navigate = useNavigate();
 
   // Cargar los favoritos desde localStorage

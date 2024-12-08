@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
-import { auth, updateUserProfile, deleteUserAccount } from "../config/firebase";
+import { auth, updateUserProfile, deleteUserAccount } from "../config/Firebase";
 import { reauthenticateWithCredential, updatePassword } from "firebase/auth";
 import { EmailAuthProvider } from "firebase/auth/web-extension";
 import Notification from "../components/Notification"; // Asegúrate de ajustar la ruta
