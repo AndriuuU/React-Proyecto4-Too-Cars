@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { auth } from "../../config/firebase.jsx"
+import { auth } from "../../config/Firebase.jsx"
 import { signInWithEmailAndPassword } from "firebase/auth"
 import Notification from "../../components/Notification" // Importa el componente
 
