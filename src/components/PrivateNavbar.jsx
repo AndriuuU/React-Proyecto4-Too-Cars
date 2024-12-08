@@ -21,7 +21,7 @@ const PrivateNavbar = () => {
     <nav className="private-navbar">
       <div className="navbar-logo">
         <NavLink to="/">
-        <img src="src/components/img/logo.jpeg" alt="Logo" className="logo" />
+        <img src="public/img/logo.jpeg" alt="Logo" className="logo" />
 
         </NavLink>
       </div>
