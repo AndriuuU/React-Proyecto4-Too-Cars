@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
-import { logOut } from "../config/firebase"; 
+import { logOut } from "../config/Firebase"; 
 import "./PrivateNavbar.css";
 
 const PrivateNavbar = () => {
