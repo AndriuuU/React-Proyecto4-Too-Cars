@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
-import { auth } from "../config/firebase";
+import { auth } from "../config/Firebase";
 import "./Navbar.css";
 
 const Navbar = () => {
