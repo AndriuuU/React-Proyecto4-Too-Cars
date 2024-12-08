@@ -32,8 +32,8 @@ const Login = () => {
 
       if (!userCredential.user.emailVerified) {
         setNotification({
-          message: "Por favor, verifica tu correo electrónico antes de continuar.",
-          type: "error",
+          message: "Tienes que verificar el email",
+          type: "info",
         })
         return
       }
