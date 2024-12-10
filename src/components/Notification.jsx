@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom";
-import "./Notification.css";
+import "../style/main.scss";
 
 const Notification = ({ message, type, onClose }) => {
   if (!message) return null;

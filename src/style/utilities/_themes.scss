@@ -1,0 +1,17 @@
+
+[data-theme='light'] {
+    --primary-color: #{$light-primary-color};
+    --secondary-color: #{$light-secondary-color};
+    --hover-color: #{$light-hover-color};
+    --text-color: #{$light-text-color};
+    --bg-color: #{$light-bg-color};
+  }
+  
+  [data-theme='dark'] {
+    --primary-color: #{$dark-primary-color};
+    --secondary-color: #{$dark-secondary-color};
+    --hover-color: #{$dark-hover-color};
+    --text-color: #{$dark-text-color};
+    --bg-color: #{$dark-bg-color};
+  }
+  

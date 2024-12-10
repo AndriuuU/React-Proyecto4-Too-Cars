@@ -1,0 +1,118 @@
+.auth {
+  width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f9e4b7;
+  border: 2px solid #d99ea2;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  
+  &__tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    &__tab {
+      flex: 1;
+      padding: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      color: black;
+      background-color: #f9e4b7;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+
+      &--active {
+        background-color: #d99ea2;
+        color: white;
+      }
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &__label {
+      text-align: left;
+      font-size: 14px;
+    }
+
+    &__input {
+      width: 86%;
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #e1e0ff;
+      border-radius: 5px;
+      background-color: #ffffff;
+      color: black;
+
+      &:focus {
+        border-color: #6c63ff;
+        outline: none;
+      }
+    }
+
+    &__checkbox-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: black;
+    }
+
+    &__error-message {
+      font-size: 12px;
+      color: red;
+      margin-top: -5px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__button {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #f9c74f;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #be9420;
+      color: white;
+    }
+  }
+
+  &__footer {
+    margin-top: 20px;
+    font-size: 14px;
+
+    &__link {
+      color: #6c63ff;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+   // Animación de crecimiento y ajuste al cambiar entre Login y Register
+   &.auth--active {
+    width: 500px; // Ajustamos el tamaño cuando el formulario está activo
+    padding: 30px;
+  }
+
+  // Estilo para la animación en pantallas más pequeñas
+  @media (max-width: 600px) {
+    .auth {
+      width: 90%;
+    }
+  }
+}

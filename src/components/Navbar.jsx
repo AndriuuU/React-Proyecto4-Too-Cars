@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import { auth } from "../config/Firebase";
-import "./Navbar.css";
+import "../style/components/Navbar.scss";
 
 const Navbar = () => {
   const { user } = useContext(UserContext);
@@ -29,7 +29,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <header className="navbar-logo">
-        <img src="public\img\logo.jpeg" alt="Logo" className="logo" />
+        <img src="src/assets/img/logo.jpeg" alt="Logo" className="logo" />
         <ul className="navbar-links">
           <NavLink to="/" className="nav-link">Inicio</NavLink>
           <NavLink to="/menu" className="nav-link">Menu</NavLink>

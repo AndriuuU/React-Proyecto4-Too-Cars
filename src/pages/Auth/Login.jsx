@@ -4,7 +4,7 @@ import { auth } from "../../config/Firebase.jsx"
 import { signInWithEmailAndPassword } from "firebase/auth"
 import Notification from "../../components/Notification" // Importa el componente
 
-import "./Auth.css"
+import "../../style/main.scss";
 
 const Login = () => {
   const [formValues, setFormValues] = useState({
@@ -49,49 +49,59 @@ const Login = () => {
   }
 
   return (
-    <div className="auth-container">
+    <section className="auth">
       <Notification
         message={notification.message}
         type={notification.type}
         onClose={() => setNotification({ message: "", type: "" })}
       />
 
-      <div className="auth-tabs">
-        <Link className="auth-tab" to="/register">
+      <nav className="auth__tabs">
+        <Link className="auth__tabs__tab" to="/register">
           REGISTRAR
         </Link>
-        <div className="auth-tab active">ACCEDER</div>
-      </div>
-      <form className="auth-form" onSubmit={handleSubmit}>
-        <label>
+        <span className="auth__tabs__tab auth__tabs__tab--active">ACCEDER</span>
+      </nav>
+
+      <form className="auth__form" onSubmit={handleSubmit}>
+        <label className="auth__form__label">
           <input
             type="email"
             name="email"
             placeholder="Correo"
             value={formValues.email}
             onChange={handleChange}
+            className="auth__form__input"
           />
         </label>
 
-        <label>
+        <label className="auth__form__label">
           <input
             type="password"
             name="password"
             placeholder="Contraseña"
             value={formValues.password}
             onChange={handleChange}
+            className="auth__form__input"
           />
         </label>
 
-        <button type="submit" className="auth-button" disabled={loading}>
+        <button
+          type="submit"
+          className="auth__button"
+          disabled={loading}
+        >
           {loading ? "Accediendo..." : "ACCEDER"}
         </button>
 
-        <p className="auth-footer">
-          ¿No tienes cuenta? <Link to="/register">Crear cuenta</Link>
+        <p className="auth__footer">
+          ¿No tienes cuenta?{" "}
+          <Link to="/register" className="auth__footer__link">
+            Crear cuenta
+          </Link>
         </p>
       </form>
-    </div>
+    </section>
   )
 }
 

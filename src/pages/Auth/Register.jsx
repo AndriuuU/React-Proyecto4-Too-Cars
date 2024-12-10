@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Auth.css";
+import "../../style/main.scss";
 import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { auth } from "../../config/Firebase";
 import Notification from "../../components/Notification";
@@ -129,95 +129,105 @@ const Register = () => {
   };
 
   return (
-    <div className="auth-container">
-        <Notification
-        message={notification.message}
-        type={notification.type}
-        onClose={() => setNotification({ message: "", type: "" })}
-      />
-      <div className="auth-tabs">
-        <div className="auth-tab active">REGISTRAR</div>
-        <Link to="/login" className="auth-tab">
-          ACCEDER
-        </Link>
-      </div>
-      <form onSubmit={handleSubmit} className="auth-form">
-        <label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Correo"
-            value={formValues.email}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-        </label>
-        {formErrors.email && <p className="error-message">{formErrors.email}</p>}
+      <section className="auth">
+    <Notification
+      message={notification.message}
+      type={notification.type}
+      onClose={() => setNotification({ message: "", type: "" })}
+    />
 
-        <label>
-          <input
-            type="date"
-            name="birthDate"
-            value={formValues.birthDate}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-        </label>
-        {formErrors.birthDate && (
-          <p className="error-message">{formErrors.birthDate}</p>
-        )}
+    <nav className="auth__tabs">
+      <span className="auth__tabs__tab auth__tabs__tab--active">REGISTRAR</span>
+      <Link to="/login" className="auth__tabs__tab">
+        ACCEDER
+      </Link>
+    </nav>
 
-        <label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Contraseña"
-            value={formValues.password}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-        </label>
-        {formErrors.password && (
-          <p className="error-message">{formErrors.password}</p>
-        )}
+    <form className="auth__form" onSubmit={handleSubmit}>
+      <label className="auth__form__label">
+        <input
+          type="email"
+          name="email"
+          placeholder="Correo"
+          value={formValues.email}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className="auth__form__input"
+        />
+      </label>
+      {formErrors.email && (
+        <p className="auth__form__error-message">{formErrors.email}</p>
+      )}
 
-        <label>
-          <input
-            type="password"
-            name="confirmPassword"
-            placeholder="Repita la contraseña"
-            value={formValues.confirmPassword}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-        </label>
-        {formErrors.confirmPassword && (
-          <p className="error-message">{formErrors.confirmPassword}</p>
-        )}
+      <label className="auth__form__label">
+        <input
+          type="date"
+          name="birthDate"
+          value={formValues.birthDate}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className="auth__form__input"
+        />
+      </label>
+      {formErrors.birthDate && (
+        <p className="auth__form__error-message">{formErrors.birthDate}</p>
+      )}
 
-        <label className="checkbox-container">
-          <input
-            type="checkbox"
-            name="acceptPolicies"
-            checked={formValues.acceptPolicies}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-          Aceptar políticas
-        </label>
-        {formErrors.acceptPolicies && (
-          <p className="error-message">{formErrors.acceptPolicies}</p>
-        )}
+      <label className="auth__form__label">
+        <input
+          type="password"
+          name="password"
+          placeholder="Contraseña"
+          value={formValues.password}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className="auth__form__input"
+        />
+      </label>
+      {formErrors.password && (
+        <p className="auth__form__error-message">{formErrors.password}</p>
+      )}
 
-        <button type="submit" className="auth-button">
-          REGISTRAR
-        </button>
+      <label className="auth__form__label">
+        <input
+          type="password"
+          name="confirmPassword"
+          placeholder="Repita la contraseña"
+          value={formValues.confirmPassword}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className="auth__form__input"
+        />
+      </label>
+      {formErrors.confirmPassword && (
+        <p className="auth__form__error-message">{formErrors.confirmPassword}</p>
+      )}
 
-        <p className="auth-footer">
-          ¿Ya tienes cuenta? <Link to="/login">Iniciar sesión</Link>
-        </p>
-      </form>
-    </div>
+      <label className="auth__form__checkbox-container">
+        <input
+          type="checkbox"
+          name="acceptPolicies"
+          checked={formValues.acceptPolicies}
+          onChange={handleChange}
+          onBlur={handleBlur}
+        />
+        Aceptar políticas
+      </label>
+      {formErrors.acceptPolicies && (
+        <p className="auth__form__error-message">{formErrors.acceptPolicies}</p>
+      )}
+
+      <button type="submit" className="auth__button">
+        REGISTRAR
+      </button>
+
+      <p className="auth__footer">
+        ¿Ya tienes cuenta?{" "}
+        <Link to="/login" className="auth__footer__link">Iniciar sesión</Link>
+      </p>
+    </form>
+    </section>
+
   );
 };
 

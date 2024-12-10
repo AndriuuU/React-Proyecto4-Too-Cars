@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import { logOut } from "../config/Firebase"; 
-import "./PrivateNavbar.css";
+import "../style/main.scss";
 
 const PrivateNavbar = () => {
   const { user } = useContext(UserContext);
@@ -21,7 +21,7 @@ const PrivateNavbar = () => {
     <nav className="private-navbar">
       <div className="navbar-logo">
         <NavLink to="/">
-        <img src="public/img/logo.jpeg" alt="Logo" className="logo" />
+        <img src="src/assets/img/logo.jpeg" alt="Logo" className="logo" />
 
         </NavLink>
       </div>
