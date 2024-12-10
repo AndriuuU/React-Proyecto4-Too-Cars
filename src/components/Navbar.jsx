@@ -29,7 +29,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <header className="navbar-logo">
-        <img src="public/img/logo.jpeg" alt="Logo" className="logo" />
+        <img src="public\img\logo.jpeg" alt="Logo" className="logo" />
         <ul className="navbar-links">
           <NavLink to="/" className="nav-link">Inicio</NavLink>
           <NavLink to="/menu" className="nav-link">Menu</NavLink>
