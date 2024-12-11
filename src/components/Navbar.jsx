@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import { auth } from "../config/Firebase";
@@ -10,6 +10,7 @@ const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
+  // Función para manejar el logout
   const handleLogout = async () => {
     try {
       await auth.signOut();
@@ -19,14 +20,33 @@ const Navbar = () => {
     }
   };
 
+  // Función para alternar el menú desplegable
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  // Función para alternar el modo oscuro y guardarlo en localStorage
   const toggleDarkMode = () => {
     setIsDarkMode((prevMode) => !prevMode);
     document.body.classList.toggle("dark-mode");
+
+    // Guardar el estado de modo oscuro en localStorage
+    localStorage.setItem("isDarkMode", !isDarkMode);
   };
+
+  // Comprobar el modo oscuro al cargar la página
+  useEffect(() => {
+    const darkModePreference = localStorage.getItem("isDarkMode");
+    
+    // Si el modo oscuro está almacenado y es verdadero, activarlo
+    if (darkModePreference === "true") {
+      setIsDarkMode(true);
+      document.body.classList.add("dark-mode");
+    } else {
+      setIsDarkMode(false);
+      document.body.classList.remove("dark-mode");
+    }
+  }, []);
 
   return (
     <nav className="navbar">

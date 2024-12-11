@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import "../style/main.scss"
-
+import '../style/main.scss'
 
 const Contacto = () => {
   const [formData, setFormData] = useState({
@@ -83,114 +82,117 @@ const Contacto = () => {
   }
 
   return (
-    <section className="form-container">
-  <h2 className="form-title">CONTACTO</h2>
-  <form onSubmit={handleSubmit} className="form-content">
-    <fieldset className="form-group">
-      <input
-        type="text"
-        id="nombreCompleto"
-        name="nombreCompleto"
-        value={formData.nombreCompleto}
-        onChange={handleChange}
-        placeholder="Nombre completo"
-      />
-      {errors.nombreCompleto && <p className="error">{errors.nombreCompleto}</p>}
-    </fieldset>
-
-    <fieldset className="form-group">
-      <input
-        type="email"
-        id="email"
-        name="email"
-        value={formData.email}
-        onChange={handleChange}
-        placeholder="Correo"
-      />
-      {errors.email && <p className="error">{errors.email}</p>}
-    </fieldset>
-
-    <fieldset className="form-group">
-      <input
-        type="text"
-        id="telefono"
-        name="telefono"
-        value={formData.telefono}
-        onChange={handleChange}
-        placeholder="Teléfono"
-      />
-      {errors.telefono && <p className="error">{errors.telefono}</p>}
-    </fieldset>
-
-    <h4>Sexo</h4>
-    <fieldset className="form-group">
-      <div className="sexo">
-        <label>
+    <div className="form-container">
+      <h2 className="form-title">CONTACTO</h2>
+      <form onSubmit={handleSubmit} className="form-content">
+        <div className="form-group">
           <input
-            type="radio"
-            name="sexo"
-            value="Hombre"
-            checked={formData.sexo === 'Hombre'}
+            type="text"
+            id="nombreCompleto"
+            name="nombreCompleto"
+            value={formData.nombreCompleto}
             onChange={handleChange}
-          />{' '}
-          Hombre
-        </label>
-        <label>
+            placeholder="Nombre completo"
+          />
+          {errors.nombreCompleto && <div className="error">{errors.nombreCompleto}</div>}
+        </div>
+
+        <div className="form-group">
           <input
-            type="radio"
-            name="sexo"
-            value="Mujer"
-            checked={formData.sexo === 'Mujer'}
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
             onChange={handleChange}
-          />{' '}
-          Mujer
-        </label>
-        <label>
+            placeholder="Correo"
+          />
+          {errors.email && <div className="error">{errors.email}</div>}
+        </div>
+
+        <div className="form-group">
           <input
-            type="radio"
-            name="sexo"
-            value="Otro"
-            checked={formData.sexo === 'Otro'}
+            type="text"
+            id="telefono"
+            name="telefono"
+            value={formData.telefono}
             onChange={handleChange}
-          />{' '}
-          Otro
-        </label>
-      </div>
-      {errors.sexo && <p className="error">{errors.sexo}</p>}
-    </fieldset>
+            placeholder="Teléfono"
+          />
+          {errors.telefono && <div className="error">{errors.telefono}</div>}
+        </div>
 
-    <fieldset className="form-group">
-      <textarea
-        id="mensaje"
-        name="mensaje"
-        value={formData.mensaje}
-        onChange={handleChange}
-        placeholder="Mensaje"
-      />
-      {errors.mensaje && <p className="error">{errors.mensaje}</p>}
-    </fieldset>
+       
 
-    <fieldset className="form-group politica">
-      <input
-        type="checkbox"
-        name="terminos"
-        checked={formData.terminos}
-        onChange={handleChange}
-      />
-      <label>Aceptar políticas</label>
-      {errors.terminos && <p className="error">{errors.terminos}</p>}
-    </fieldset>
+        <h4>Sexo</h4>
+        <div className="form-group">
+          <div className="sexo">
+            
+            <label>
+              <input
+                type="radio"
+                name="sexo"
+                value="Hombre"
+                checked={formData.sexo === 'Hombre'}
+                onChange={handleChange}
+              />{' '}
+              Hombre
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="sexo"
+                value="Mujer"
+                checked={formData.sexo === 'Mujer'}
+                onChange={handleChange}
+              />{' '}
+              Mujer
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="sexo"
+                value="Otro"
+                checked={formData.sexo === 'Otro'}
+                onChange={handleChange}
+              />{' '}
+              Otro
+            </label>
+          </div>
+          {errors.sexo && <div className="error">{errors.sexo}</div>}
+        </div>
 
-    <button
-      type="submit"
-      className="form-button"
-      disabled={Object.values(errors).some((error) => error !== '')}
-    >
-      ENVIAR
-    </button>
-  </form>
-</section>
+        <div className="form-group">
+          <textarea
+            id="mensaje"
+            name="mensaje"
+            value={formData.mensaje}
+            onChange={handleChange}
+            placeholder="Mensaje"
+          />
+          {errors.mensaje && <div className="error">{errors.mensaje}</div>}
+        </div>
 
+        <div className="form-group politica">
+          <input
+            type="checkbox"
+            name="terminos"
+            checked={formData.terminos}
+            onChange={handleChange}
+          />
+          <label>Aceptar políticas</label>
+          {errors.terminos && <div className="error">{errors.terminos}</div>}
+        </div>
+
+
+        <button
+          type="submit"
+          className="form-button"
+          disabled={Object.values(errors).some((error) => error !== '')}
+        >
+          ENVIAR
+        </button>
+      </form>
+    </div>
   )
 }
 

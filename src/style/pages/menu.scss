@@ -19,6 +19,18 @@
     grid-template-columns: 1fr; /* Un solo elemento por fila */
   }
 }
+.card{
+  background-color: #f0f4f8;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 450px; /* Aumenta el tamaño máximo de la tarjeta */
+  margin: 10px; /* Separación entre tarjetas */
+  min-width: 300px; /* Aumenta el tamaño mínimo de la tarjeta */
+  box-sizing: border-box;
+}
 
 /* Paginación */
 .menu__pagination {
