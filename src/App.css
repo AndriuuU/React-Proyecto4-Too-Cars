@@ -5,6 +5,7 @@
   text-align: center;
 }
 
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -53,5 +54,5 @@ html, body {
 }
 
 .content {
-  flex: 1;  /* Esto asegura que el contenido se expanda y empuje el footer hacia abajo si el contenido es pequeño */
+  flex: 1; 
 }

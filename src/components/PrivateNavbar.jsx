@@ -1,12 +1,12 @@
-import { NavLink, useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { UserContext } from "../context/UserContext";
-import { logOut } from "../config/Firebase"; 
-import "../style/main.scss";
+import { NavLink, useNavigate } from "react-router-dom"
+import { useContext } from "react"
+import { UserContext } from "../context/UserContext"
+import { logOut } from "../config/Firebase" 
+import "../style/main.scss"
 
 const PrivateNavbar = () => {
-  const { user } = useContext(UserContext);
-  const navigate = useNavigate();
+  const { user } = useContext(UserContext)
+  const navigate = useNavigate()
 
   const handleLogout = async () => {
     try {
@@ -15,33 +15,32 @@ const PrivateNavbar = () => {
     } catch (error) {
       console.error("Error al cerrar sesión:", error)
     }
-  };
+  }
 
   return (
-    <nav className="private-navbar">
-      <div className="navbar-logo">
+    <nav className="navbar private-navbar">
+      <div className="navbar__logo">
         <NavLink to="/">
-        <img src="src/assets/img/logo.jpeg" alt="Logo" className="logo" />
-
+          <img src="src/assets/img/logo.jpeg" alt="Logo" className="navbar__logo-image" />
         </NavLink>
       </div>
-      <ul className="navbar-links">
-        <li>
-          <NavLink to="/" className="nav-link">Inicio</NavLink>
+      <ul className="navbar__links">
+        <li className="navbar__link-item">
+          <NavLink to="/" className="navbar__link">Inicio</NavLink>
         </li>
-        <li>
-          <NavLink to="/ajustes" className="nav-link">Ajustes</NavLink>
+        <li className="navbar__link-item">
+          <NavLink to="/ajustes" className="navbar__link">Ajustes</NavLink>
         </li>
-        <li>
-          <NavLink to="/favoritos" className="nav-link">Favoritos</NavLink>
+        <li className="navbar__link-item">
+          <NavLink to="/favoritos" className="navbar__link">Favoritos</NavLink>
         </li>
       </ul>
-      <div className="user-options">
-        <span className="username">{user?.displayName || "Usuario"}</span>
-        <button onClick={handleLogout} className="logout-button">Cerrar sesión</button>
+      <div className="navbar__user-options">
+        <span className="navbar__username">{user?.displayName || "Usuario"}</span>
+        <button onClick={handleLogout} className="navbar__logout-button">Cerrar sesión</button>
       </div>
     </nav>
-  );
-};
+  )
+}
 
 export default PrivateNavbar

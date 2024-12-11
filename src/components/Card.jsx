@@ -1,14 +1,14 @@
-import React from "react";
-import "../style/main.scss";
+import React from "react"
+import "../style/main.scss"
 
 const Card = ({ title, image, onClick }) => {
   return (
-    <div className="card" onClick={onClick} style={{ cursor: "pointer" }}>
-      <img src={image} alt={title} />
-      <h2>{title}</h2>
-    </div>
-  );
-};
+    <article className="card card--clickable" onClick={onClick}>
+      <img className="card__image" src={image} alt={title} />
+      <h2 className="card__title">{title}</h2>
+    </article>
+  )
+}
 
-export default Card;
+export default Card
 

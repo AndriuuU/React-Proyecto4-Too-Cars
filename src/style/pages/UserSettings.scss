@@ -1,0 +1,178 @@
+/* Configuración general */
+
+.settings {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: $light-bg-color;
+    padding: 20px;
+    border-radius: $border-radius;
+    border: 2px solid $light-secondary-color;
+    color: $light-text-color;
+    
+  }
+  
+  body.dark-mode .settings {
+    background-color: $dark-bg-color;
+    border-color: $dark-secondary-color;
+    color: $dark-text-color;
+  }
+  
+  /* Título principal */
+  .settings__title {
+    font-size: $font-size-title;
+    margin-bottom: 15px;
+    text-align: center;
+    color: $light-secondary-color;
+  }
+  
+  body.dark-mode .settings__title {
+    color: $dark-hover-color;
+  }
+  
+  /* Formularios */
+  .settings__form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .settings__form-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .settings__form-input {
+    width: calc(100% - 40px); /* Espaciado de 20px en cada lado */
+    margin: 0 auto; /* Centrado */
+    padding: 10px;
+    border: 2px solid $light-secondary-color;
+    border-radius: $border-radius;
+    background-color: $light-bg-color;
+    color: $light-text-color;
+    font-size: $font-size-regular;
+    box-sizing: border-box;
+  }
+  
+  body.dark-mode .settings__form-input {
+    border-color: $dark-secondary-color;
+    background-color: $dark-bg-color;
+    color: $dark-text-color;
+  }
+  
+  .settings__form-button {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: $font-size-regular;
+    font-weight: bold;
+    background-color: $light-secondary-color;
+    color: $light-text-color;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center;
+  }
+  
+  .settings__form-button:hover {
+    background-color: $light-hover-color;
+  }
+  
+  body.dark-mode .settings__form-button {
+    background-color: $dark-secondary-color;
+    color: $dark-text-color;
+  }
+  
+  body.dark-mode .settings__form-button:hover {
+    background-color: $dark-hover-color;
+  }
+  
+  /* Sección genérica */
+  .settings__section {
+    margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; 
+  }
+  
+  .settings__section-title {
+    font-size: $font-size-subtitle;
+    margin-bottom: 15px;
+    color: $color-primary;
+    text-align: center;
+  }
+  
+  body.dark-mode .settings__section-title {
+    color: $dark-hover-color;
+  }
+  
+  .settings__section-input {
+    width: calc(100% - 40px); /* Espaciado igual a los inputs del formulario */
+    margin: 0 auto; /* Centrado */
+    padding: 10px;
+    border: 2px solid $light-secondary-color;
+    border-radius: $border-radius;
+    background-color: $light-bg-color;
+    color: $light-text-color;
+    font-size: $font-size-regular;
+    box-sizing: border-box;
+  }
+  
+  body.dark-mode .settings__section-input {
+    border-color: $dark-secondary-color;
+    background-color: $dark-bg-color;
+    color: $dark-text-color;
+  }
+  
+  .settings__section-button {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: $font-size-regular;
+    font-weight: bold;
+    background-color: $light-secondary-color;
+    color: $light-text-color;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .settings__section-button:hover {
+    background-color: $light-hover-color;
+  }
+  
+  body.dark-mode .settings__section-button {
+    background-color: $dark-secondary-color;
+    color: $dark-text-color;
+  }
+  
+  body.dark-mode .settings__section-button:hover {
+    background-color: $dark-hover-color;
+    color: $dark-text-color;
+  }
+  
+  /* Botón de peligro */
+  .settings__section-button--danger {
+    background-color: $color-accent;
+    color: $color-light;
+  }
+  
+  body.dark-mode .settings__section-button--danger {
+    background-color: $dark-error-dark;
+  }
+  
+  .settings__section-button--danger:hover {
+    background-color: $dark-error-dark;
+    color: $dark-text-color;
+  }
+  
+  body {
+    background-color: $light-bg-color; /* Fondo rosita */
+    color: $light-text-color; /* Texto negro */
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Modo oscuro */
+  body.dark-mode {
+    background-color: $dark-bg-color; /* Fondo gris oscuro */
+    color: $dark-text-color; /* Texto claro */
+  }

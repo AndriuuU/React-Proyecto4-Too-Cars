@@ -1,61 +1,75 @@
-.notification-card {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 15px 20px;
-    background-color: #333;
-    color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    z-index: 1000;
-    animation: fade-in 0.3s ease-in-out;
+/* Notification Styles */
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  padding: 15px 20px;
+  border-radius: 8px;
+  background-color: $color-dark; // Variable para fondo oscuro
+  color: $color-light; // Variable para texto claro
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: fade-in 0.3s ease-in-out;
+
+  &--success {
+    background-color: $color-success; // Verde éxito
   }
-  .notification-card {
-    position: fixed; /* Asegura que siempre está en el viewport */
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000; /* Evita que quede detrás de otros elementos */
-    padding: 15px 20px;
-    border-radius: 8px;
-    background-color: #333;
-    color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    animation: fade-in 0.3s ease-in-out;
+
+  &--error {
+    background-color: $color-error; // Rojo error
   }
-  
-  
-  .notification-card.success {
-    background-color: #4caf50;
+
+  &--info {
+    background-color: $color-info; // Azul informativo
   }
-  
-  .notification-card.error {
-    background-color: #f44336;
+
+  &__message {
+    font-size: 1rem;
+    flex: 1;
   }
-  
-  .notification-card.info {
-    background-color: #2196f3;
-  }
-  
-  .notification-card .close-button {
+
+  &__close-button {
     background: none;
     border: none;
-    color: #fff;
+    color: $color-light;
     font-size: 18px;
     cursor: pointer;
-  }
-  
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
+    transition: transform 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      transform: scale(1.2);
+      color: $color-hover; // Color de hover (puede ser personalizado)
     }
   }
-  
+}
+
+/* Animación de entrada */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modo oscuro */
+body.dark-mode {
+  .notification {
+    background-color: $dark-secondary-color; // Fondo en modo oscuro
+    color: $dark-text-color;
+
+    &__close-button {
+      color: $dark-text-color;
+
+      &:hover {
+        color: $dark-hover-color;
+      }
+    }
+  }
+}

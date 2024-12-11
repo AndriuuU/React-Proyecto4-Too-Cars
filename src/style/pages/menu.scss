@@ -1,0 +1,49 @@
+/* Contenedor de la lista de coches */
+.cars__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 elementos por fila */
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Responsive: Dos elementos por fila en pantallas pequeñas */
+@media (max-width: 768px) {
+  .cars__list {
+    grid-template-columns: repeat(2, 1fr); /* 2 elementos por fila */
+  }
+}
+
+/* Responsive: Un solo elemento por fila en pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .cars__list {
+    grid-template-columns: 1fr; /* Un solo elemento por fila */
+  }
+}
+
+/* Paginación */
+.menu__pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.menu__pagination__button {
+  background-color: $color-secondary;
+  border: none;
+  border-radius: 5px;
+  color: $color-light;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.menu__pagination__button:hover {
+  background-color: $color-secondary-hover;
+}
+
+.menu__pagination__button--active {
+  background-color: $color-primary;
+  font-weight: bold;
+}

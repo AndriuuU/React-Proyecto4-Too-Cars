@@ -1,99 +1,99 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useLoaderData } from "react-router-dom";
-import "./Coche.css"; // Importamos los estilos
-import Contacto from "./Contacto"; // Asegúrate de tener este componente
+import { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
+import { useLoaderData } from "react-router-dom"
+import "../style/main.scss"
+import Contacto from "./Contacto" // Asegúrate de tener este componente
 
 const Coche = () => {
-  const { id } = useParams();
-  const car = useLoaderData(); // Cargar los datos del coche
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [showContactForm, setShowContactForm] = useState(false); // Estado del formulario
-  const [closing, setClosing] = useState(false); // Para animación de cierre
+  const { id } = useParams()
+  const car = useLoaderData() // Cargar los datos del coche
+  const [isFavorite, setIsFavorite] = useState(false)
+  const [showContactForm, setShowContactForm] = useState(false) // Estado del formulario
+  const [closing, setClosing] = useState(false) // Para animación de cierre
 
   // Cargar favoritos desde localStorage
   useEffect(() => {
-    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || []
     if (favorites.some((fav) => fav.id === car.id)) {
-      setIsFavorite(true); // El coche está en favoritos
+      setIsFavorite(true) // El coche está en favoritos
     }
-  }, [car.id]);
+  }, [car.id])
 
   // Función para agregar o eliminar coche de favoritos
   const toggleFavorite = () => {
-    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || []
 
     if (isFavorite) {
       // Eliminar de favoritos
-      const updatedFavorites = favorites.filter((fav) => fav.id !== car.id);
-      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      const updatedFavorites = favorites.filter((fav) => fav.id !== car.id)
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites))
     } else {
       // Agregar a favoritos
-      favorites.push(car);
-      localStorage.setItem("favorites", JSON.stringify(favorites));
+      favorites.push(car)
+      localStorage.setItem("favorites", JSON.stringify(favorites))
     }
 
-    setIsFavorite(!isFavorite); // Actualizar el estado del botón
-  };
+    setIsFavorite(!isFavorite) // Actualizar el estado del botón
+  }
 
   // Función para cerrar el modal
   const closeModal = () => {
-    setClosing(true);
+    setClosing(true)
     setTimeout(() => {
-      setShowContactForm(false);
-      setClosing(false);
-    }, 300);
-  };
+      setShowContactForm(false)
+      setClosing(false)
+    }, 300)
+  }
 
   return (
-    <div className="coche-card">
-      <div className="coche-card-image">
+    <article className="coche">
+      <figure className="coche__image">
         <img src={car.image} alt={`${car.make} ${car.model}`} />
-
         <button
-          className={`favorite-button ${isFavorite ? "favorited" : ""}`}
+          className={`coche__favorite-btn ${isFavorite ? "coche__favorite-btn--active" : ""}`}
           onClick={toggleFavorite}
         >
           ★
         </button>
-      </div>
-      <div className="coche-card-info">
-        <h2>{`${car.make} ${car.model}`}</h2>
-        <p className="price">{car.price} €</p>
-        <p>
+      </figure>
+
+      <section className="coche__info">
+        <h2 className="coche__title">{`${car.make} ${car.model}`}</h2>
+        <p className="coche__price">{car.price} €</p>
+        <p className="coche__details">
           <strong>Año:</strong> {car.year}
         </p>
-        <p>
+        <p className="coche__details">
           <strong>Tipo de combustible:</strong> {car.fuelType}
         </p>
-        <p>
+        <p className="coche__details">
           <strong>Tipo de cambio:</strong> {car.transmission}
         </p>
 
         <button
-          className="contact-button"
-          onClick={() => setShowContactForm(true)} // Mostrar el formulario
+          className="coche__contact-btn"
+          onClick={() => setShowContactForm(true)}
         >
           CONTACTAR
         </button>
-      </div>
+      </section>
 
       {/* Modal para el formulario de contacto */}
       {showContactForm && (
-        <div className="modal-overlay" onClick={closeModal}>
+        <aside className="coche__modal-overlay" onClick={closeModal}>
           <div
-            className={`modal-content ${closing ? "closing" : ""}`}
+            className={`coche__modal-content ${closing ? "coche__modal-content--closing" : ""}`}
             onClick={(e) => e.stopPropagation()}
           >
-            <button className="close-button" onClick={closeModal}>
+            <button className="coche__modal-close-btn" onClick={closeModal}>
               ✖
             </button>
             <Contacto />
           </div>
-        </div>
+        </aside>
       )}
-    </div>
-  );
-};
+    </article>
+  )
+}
 
-export default Coche;
+export default Coche

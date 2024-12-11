@@ -1,53 +1,55 @@
+/* Estilos base de la tarjeta */
 .card {
-    background-color: #f0f4f8;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: calc(33.33% - 20px); /* Ajuste dinámico al ancho de la pantalla */
-    margin: 10px; /* Separación entre tarjetas */
+  background-color: #f0f4f8;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: calc(33.33% - 20px); /* Ajuste dinámico al ancho de la pantalla */
+  margin: 10px; /* Separación entre tarjetas */
+}
+
+.card--clickable {
+  cursor: pointer;
+}
+
+.card--clickable:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card__image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card__title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin: 16px;
+}
+
+/* Modo oscuro */
+body.dark-mode .card {
+  background-color: #2e3440;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .card__title {
+  color: #eceff4;
+}
+
+/* Hacer las tarjetas responsivas */
+@media (max-width: 768px) {
+  .card {
+    width: calc(50% - 20px);
   }
-  
-  .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: calc(100% - 20px);
   }
-  
-  .card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  .card-content {
-    padding: 16px;
-  }
-  
-  .card-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 8px;
-  }
-  
-  .card-description {
-    font-size: 1rem;
-    color: #555;
-  }
-  
-  .card-button {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 10px 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  
-  .card-button:hover {
-    background-color: #0056b3;
-  }
-  
+}

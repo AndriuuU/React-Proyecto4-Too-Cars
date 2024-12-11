@@ -1,58 +1,63 @@
-/* Asegúrate de que html y body ocupen el 100% del alto de la pantalla */
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
-
-/* El contenedor principal debe ocupar el 100% del alto */
-.contenedor {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Altura mínima igual al alto de la ventana */
-}
-
-/* El contenido principal debe ocupar el espacio restante */
-.contenido {
-    flex: 1; /* Esto empuja el footer hacia abajo */
-}
-
-/* Estilo General del Footer */
 .footer {
-    background-color: #d99ea2; /* Color de fondo */
-    color: white; /* Color del texto */
+    background-color: $light-secondary-color;
+    color: $dark-text-color;
+    text-align: center;
+    padding: 20px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 20px 0; /* Espaciado superior/inferior */
-    text-align: center;
-    font-family: Arial, sans-serif; /* Fuente genérica */
-}
-
-/* Estilo de los enlaces */
-.footer-links {
-    margin-bottom: 10px;
-}
-
-.footer-links p {
-    margin: 5px 0; 
-    font-size: 14px;
-    font-weight: bold;
-}
-
-/* Iconos */
-.footer-icons {
-    display: flex;
-    gap: 15px; 
-}
-
-.footer-icon {
-    width: 30px; 
-    transition: transform 0.3s ease, opacity 0.3s ease; 
-}
-
-.footer-icon:hover {
-    transform: scale(1.2); 
-    opacity: 0.8; 
-}
+  
+    &__nav {
+      margin-bottom: 10px;
+    }
+  
+    &__links {
+      display: flex;
+      gap: 15px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+  
+    &__link {
+      font-size: $font-size-regular;
+      font-weight: bold;
+      cursor: pointer;
+  
+      &:hover {
+        color: $light-hover-color;
+      }
+    }
+  
+    &__social {
+      display: flex;
+      gap: 15px;
+    }
+  
+    &__icon-link {
+      text-decoration: none;
+  
+      &:hover .footer__icon {
+        transform: scale(1.2);
+        opacity: 0.8;
+      }
+    }
+  
+    &__icon {
+      width: 30px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+  }
+  
+  /* Estilos de Modo Oscuro */
+  body.dark-mode {
+    .footer {
+      background-color: $dark-secondary-color;
+      color: $dark-text-color;
+  
+      &__link:hover {
+        color: $dark-hover-color;
+      }
+    }
+  }
+  

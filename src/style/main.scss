@@ -2,9 +2,49 @@
 @import './utilities/_themes.scss';
 @import './layout/_grid.sass';
 @import './layout/_navigation.sass';
+
 @import './components/card.scss';
 @import './components/Footer.scss';
 @import './components/Navbar.scss';
 @import './components/Notification.scss';
 @import './components/PrivateNavbar.scss';
+
 @import './pages/Auth.scss';
+@import './pages/Coche.scss';
+@import './pages/Contacto.scss';
+@import './pages/menu.scss';
+@import './pages/UserSettings.scss';
+
+
+:root {
+    --primary-bg: #d99ea2;
+    --secondary-bg: #f9c74f;
+    --text-color: #000000;
+    --hover-bg: #e3b637;
+  }
+  
+  body.dark-mode {
+    --primary-bg: #121212;
+    --secondary-bg: #333333;
+    --text-color: #ffffff;
+    --hover-bg: #444444;
+  }
+  
+  /* Usa las variables en tu CSS */
+  .navbar {
+    background-color: var(--primary-bg);
+  }
+  
+  .nav-link {
+    color: var(--text-color);
+  }
+  
+  .nav-button {
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+  }
+  
+  .nav-button:hover {
+    background-color: var(--hover-bg);
+  }
+  

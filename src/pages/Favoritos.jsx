@@ -1,40 +1,41 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Card from "../components/Card"; 
-import "./menu.css"; 
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import Card from "../components/Card" 
+import "../style/main.scss"
+
 
 const Favoritos = () => {
-  const [favorites, setFavorites] = useState([]); 
-  const [currentPage, setCurrentPage] = useState(1); 
-  const carsPerPage = 15; 
-  const navigate = useNavigate();
+  const [favorites, setFavorites] = useState([]) 
+  const [currentPage, setCurrentPage] = useState(1) 
+  const carsPerPage = 15 
+  const navigate = useNavigate()
 
   // Cargar los favoritos desde localStorage
   useEffect(() => {
-    const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    setFavorites(storedFavorites);
-  }, []);
+    const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || []
+    setFavorites(storedFavorites)
+  }, [])
 
   // Calcular los favoritos que se muestran en la página actual
-  const indexOfLastCar = currentPage * carsPerPage;
-  const indexOfFirstCar = indexOfLastCar - carsPerPage;
-  const currentFavorites = favorites.slice(indexOfFirstCar, indexOfLastCar);
+  const indexOfLastCar = currentPage * carsPerPage
+  const indexOfFirstCar = indexOfLastCar - carsPerPage
+  const currentFavorites = favorites.slice(indexOfFirstCar, indexOfLastCar)
 
   // Número total de páginas
-  const totalPages = Math.ceil(favorites.length / carsPerPage);
+  const totalPages = Math.ceil(favorites.length / carsPerPage)
 
   const handleCardClick = (id) => {
-    navigate(`/coche/${id}`); // Navegar a la página de detalles del coche
-  };
+    navigate(`/coche/${id}`) // Navegar a la página de detalles del coche
+  }
 
   const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber); // Cambiar la página actual
-  };
+    setCurrentPage(pageNumber) // Cambiar la página actual
+  }
 
   return (
     <div>
       <h2>Mis Favoritos</h2>
-      <div className="card-container">
+      <div className="cars__list">
         {favorites.length > 0 ? (
           currentFavorites.map((car) => (
             <div key={car.id} className="car-card">
@@ -65,7 +66,7 @@ const Favoritos = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Favoritos;
+export default Favoritos
