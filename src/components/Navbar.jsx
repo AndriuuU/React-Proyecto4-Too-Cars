@@ -51,7 +51,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <header className="navbar__logo">
-        <img src="src/assets/img/logo.jpeg" alt="Logo" className="navbar__logo-image" />
+        <img src="D:/2 DAW 24-25/Desarrollo web en entorno cliente/React/React Proyecto4 Too Cars/public/img/logo.jpeg" alt="Logo" className="navbar__logo-image" />
         <ul className="navbar__links">
           <NavLink to="/" className="navbar__link">Inicio</NavLink>
           <NavLink to="/menu" className="navbar__link">Menu</NavLink>
