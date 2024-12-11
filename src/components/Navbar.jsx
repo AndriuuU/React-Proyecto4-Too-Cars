@@ -4,6 +4,8 @@ import { UserContext } from "../context/UserContext";
 import { auth } from "../config/Firebase";
 import "../style/main.scss";
 
+import logo from '../../public/img/logo.jpeg';
+
 const Navbar = () => {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
@@ -51,7 +53,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <header className="navbar__logo">
-        <img src="/public/img/logo.jpeg" alt="Logo" className="navbar__logo-image" />
+        <img src={logo} alt="Logo" className="navbar__logo-image" />
         <ul className="navbar__links">
           <NavLink to="/" className="navbar__link">Inicio</NavLink>
           <NavLink to="/menu" className="navbar__link">Menu</NavLink>
