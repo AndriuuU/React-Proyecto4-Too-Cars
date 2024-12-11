@@ -1,4 +1,9 @@
 import "../style/main.scss"
+import instagram from '../../public/img/logo-instagram.png';
+import facebook from '../../public/img/logo-facebook.png';
+import whatsapp from '../../public/img/logo-whatsapp.png';
+import x from '../../public/img/logo-x.png';
+
 
 const Footer = () => {
   return (
@@ -13,28 +18,28 @@ const Footer = () => {
       <div className="footer__social">
         <a href="#" className="footer__icon-link" aria-label="Instagram">
           <img
-            src="src/assets/img/logo-instagram.png"
+            src={instagram}
             alt="Instagram"
             className="footer__icon"
           />
         </a>
         <a href="#" className="footer__icon-link" aria-label="Facebook">
           <img
-            src="src/assets/img/logo-facebook.png"
+            src={facebook}
             alt="Facebook"
             className="footer__icon"
           />
         </a>
         <a href="#" className="footer__icon-link" aria-label="WhatsApp">
           <img
-            src="src/assets/img/logo-whatsapp.png"
+            src={whatsapp}
             alt="WhatsApp"
             className="footer__icon"
           />
         </a>
         <a href="#" className="footer__icon-link" aria-label="X">
           <img
-            src="src/assets/img/logo-x.png"
+            src={x}
             alt="X"
             className="footer__icon"
           />
