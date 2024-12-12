@@ -34,8 +34,6 @@ Aquí podrás detallar los problemas que encontraste durante el desarrollo y las
 ### Tipografia
    - **Descripción**: A la hora de subir la app, la página no ha obtenido bien la tipografia del proyecto y tiene otra difirente.
 
-### Tipografia
-   - **Descripción**: A la hora de subir la app, la página no ha obtenido bien la tipografia del proyecto y tiene otra difirente.
 
 ## Estructura
 ```
@@ -66,11 +64,20 @@ src/
 │       ├── _variables.scss
 
 ```
+
+## Validaciones
+En ek video no me he acorado de exponer las validaciones pero han sido hechas.
+![alt text](image.png)
+
+Tambien las validaciones de CSS
+![alt text](image-1.png)
+
 ## Video Demo
 
 Aquí puedes agregar un enlace a un video donde se muestre cómo funciona el proyecto o una demostración de la aplicación en acción:
 
 - [Ver video demo](URL_DEL_VIDEO)
-- [Despliegue](URL_DEL_VIDEO)
+- [Despliegue](https://toocars.netlify.app/)
+- [Despliegue 2](https://rad-semolina-0aebe9.netlify.app/) Por si acaso falla el primero
 
 

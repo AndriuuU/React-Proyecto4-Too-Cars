@@ -118,11 +118,11 @@ body, html {
 }
 
 body.dark-mode .navbar__toggle input[type="checkbox"] {
-  border-color: transparent; /* Remove border in dark mode */
+  border-color: transparent;
 }
 
 body.dark-mode .navbar__toggle input[type="checkbox"]::before {
-  background-color: var($color-primary); /* Default dark mode background */
+  background-color: var($color-primary);
 }
 
 
