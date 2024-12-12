@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: "Luckiest Guy", cursive;
-}
-
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -14,15 +7,6 @@ html, body {
   text-align: center;
 }
 
-.app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;  /* Esto asegura que el contenedor principal tenga al menos el 100% de la altura de la ventana */
-}
-
-.content {
-  flex: 1;  /* Esto hace que el main ocupe el espacio restante, empujando el footer hacia abajo */
-}
 
 .logo {
   height: 6em;
@@ -59,4 +43,20 @@ html, body {
 
 .read-the-docs {
   color: #888;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Luckiest Guy", cursive;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;  /* Esto asegura que la altura del contenedor principal sea igual al 100% de la ventana */
+}
+
+.content {
+  flex: 1; 
 }
