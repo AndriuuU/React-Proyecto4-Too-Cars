@@ -4,32 +4,50 @@
   grid-template-columns: repeat(3, 1fr); /* 3 elementos por fila */
   gap: 20px;
   padding: 20px;
+  justify-content: center;
 }
-
-/* Responsive: Dos elementos por fila en pantallas pequeñas */
-@media (max-width: 768px) {
+.cars__title{
+  text-align: center;
+}
+/* Responsive: Dos elementos por fila en pantallas medianas */
+@media (max-width: 1024px) {
   .cars__list {
     grid-template-columns: repeat(2, 1fr); /* 2 elementos por fila */
   }
 }
 
-/* Responsive: Un solo elemento por fila en pantallas muy pequeñas */
-@media (max-width: 480px) {
+/* Responsive: Un solo elemento por fila en pantallas pequeñas */
+@media (max-width: 768px) {
   .cars__list {
     grid-template-columns: 1fr; /* Un solo elemento por fila */
+    gap: 15px; /* Ajustar espacio entre elementos */
   }
 }
-.card{
+
+/* Responsive: Espaciado adicional para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .cars__list {
+    padding: 10px; /* Reducir padding */
+  }
+}
+
+/* Estilo de las tarjetas */
+.card {
   background-color: #f0f4f8;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
-  max-width: 450px; /* Aumenta el tamaño máximo de la tarjeta */
-  margin: 10px; /* Separación entre tarjetas */
-  min-width: 300px; /* Aumenta el tamaño mínimo de la tarjeta */
+  max-width: 400px; /* Tamaño máximo reducido para pantallas pequeñas */
+  margin: auto; /* Centrar tarjetas */
   box-sizing: border-box;
+}
+
+/* Hover en tarjetas */
+.card:hover {
+  transform: scale(1.05); /* Ampliar tarjeta al pasar el ratón */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Paginación */
@@ -38,13 +56,15 @@
   justify-content: center;
   gap: 10px;
   margin: 20px 0;
+  flex-wrap: wrap; /* Hacer que los botones se ajusten en pantallas pequeñas */
 }
 
+/* Botón de paginación */
 .menu__pagination__button {
-  background-color: $color-secondary;
+  background-color: #007bff; /* Cambiar colores por valores hexadecimales */
   border: none;
   border-radius: 5px;
-  color: $color-light;
+  color: #ffffff;
   padding: 10px 15px;
   cursor: pointer;
   font-size: 14px;
@@ -52,10 +72,18 @@
 }
 
 .menu__pagination__button:hover {
-  background-color: $color-secondary-hover;
+  background-color: #0056b3;
 }
 
 .menu__pagination__button--active {
-  background-color: $color-primary;
+  background-color: #28a745;
   font-weight: bold;
+}
+
+/* Responsive para paginación */
+@media (max-width: 480px) {
+  .menu__pagination__button {
+    font-size: 12px;
+    padding: 8px 10px; /* Reducir tamaño de botones */
+  }
 }

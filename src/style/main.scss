@@ -1,6 +1,6 @@
 @import './utilities/_variables.scss';
 @import './utilities/_themes.scss';
-@import './layout/_grid.sass';
+@import './layout/_grid.scss';
 @import './layout/_navigation.sass';
 
 @import './components/card.scss';
@@ -11,10 +11,16 @@
 
 @import './pages/Auth.scss';
 @import './pages/Coche.scss';
+@import './pages/inicio.scss';
 @import './pages/Contacto.scss';
 @import './pages/error404.scss';
 @import './pages/menu.scss';
 @import './pages/UserSettings.scss';
+
+
+// Tipografia 
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
 
 
 :root {
@@ -22,6 +28,21 @@
     --secondary-bg: #f9c74f;
     --text-color: #000000;
     --hover-bg: #e3b637;
+    font-family: "Luckiest Guy", cursive;
+    letter-spacing: 2px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+  }
+
+  body{
+    font-family: "Luckiest Guy", cursive;   
+    letter-spacing: 2px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    
   }
   
   body.dark-mode {
@@ -29,11 +50,19 @@
     --secondary-bg: #333333;
     --text-color: #ffffff;
     --hover-bg: #444444;
+
+    font-family: "Luckiest Guy", cursive;   
+    letter-spacing: 2px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    
   }
   
   /* Usa las variables en tu CSS */
   .navbar {
     background-color: var(--primary-bg);
+
   }
   
   .nav-link {
@@ -47,5 +76,6 @@
   
   .nav-button:hover {
     background-color: var(--hover-bg);
+
   }
   

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
 
 .coche__card-container {
   display: flex;
@@ -69,6 +70,9 @@
 
 /* Estilo para la tarjeta de coche */
 .coche {
+  font-family: "Hind", sans-serif;
+  font-weight: 300;
+  font-style: normal;
   display: flex;
   max-width: 800px;
   background-color: $light-primary-color;
@@ -78,6 +82,8 @@
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.05);
   position: relative;
+
+
 }
 
 .coche__image {
@@ -213,4 +219,56 @@
 /* Clase para la animación de cierre */
 .coche__modal-content--closing {
   animation: slide-down 0.4s ease-in;
+}
+
+/* Modo oscuro */
+body.dark-mode {
+  background-color: $dark-bg-color;
+  color: $dark-text-color;
+}
+
+/* Estilo para el contenedor de coches en modo oscuro */
+body.dark-mode .coche__card-container {
+  background-color: $dark-bg-color;
+}
+
+body.dark-mode .coche {
+  background-color: $dark-primary-color;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .coche__info {
+  background-color: $dark-secondary-color;
+}
+
+body.dark-mode .coche__title {
+  color: $dark-text-color;
+}
+
+body.dark-mode .coche__details {
+  color: $color-light;
+}
+
+body.dark-mode .coche__contact-btn {
+  background-color: $dark-hover-color;
+}
+
+body.dark-mode .coche__contact-btn:hover {
+  background-color: darken($dark-hover-color, 10%);
+}
+
+body.dark-mode .coche__modal-overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .coche__modal-content {
+  background-color: $dark-primary-color;
+}
+
+body.dark-mode .coche__modal-close-btn {
+  color: $dark-text-color;
+}
+
+body.dark-mode .coche__details strong {
+  color: $dark-hover-color;
 }

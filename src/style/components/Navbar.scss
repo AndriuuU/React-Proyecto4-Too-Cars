@@ -73,6 +73,7 @@ body, html {
   font-size: 14px;
   font-weight: bold;
   margin-right: 20px;
+  list-style: none; 
 }
 
 .navbar__toggle label {
@@ -107,7 +108,7 @@ body, html {
   height: 18px;
   background-color: #bfa834; /* Darker yellow in light mode */
   border-radius: 50%;
-  top: 1px;
+  top: 3px;
   left: 1px;
   transition: all 0.3s;
 }
@@ -121,7 +122,7 @@ body.dark-mode .navbar__toggle input[type="checkbox"] {
 }
 
 body.dark-mode .navbar__toggle input[type="checkbox"]::before {
-  background-color: var(--primary-bg); /* Default dark mode background */
+  background-color: var($color-primary); /* Default dark mode background */
 }
 
 
@@ -211,5 +212,124 @@ body.dark-mode .navbar__dropdown-item:hover {
     flex-direction: row;
     justify-content: flex-end;
     gap: 10px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  /* Ajustar navbar */
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .navbar__logo-image {
+    width: 20%;
+    margin-bottom: 10px;
+  }
+
+  /* Ocultar links y mostrar menú hamburguesa */
+  .navbar__links {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .navbar__links--visible {
+    display: flex;
+  }
+
+  .navbar__link {
+    font-size: 14px;
+  }
+
+  /* Botones más compactos */
+  .navbar__buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .navbar__button {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  /* Menú de usuario */
+  .navbar__user-button {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  .navbar__dropdown-menu {
+    width: 100px;
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 880px) {
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .navbar__logo {
+    margin-bottom: 10px;
+  }
+
+  .navbar__logo-image {
+    width: 15%;
+  }
+
+  .navbar__hamburger {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-color);
+    padding: 5px;
+  }
+
+  .navbar__links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .navbar__links--visible {
+    display: flex;
+  }
+
+  .navbar__link {
+    font-size: 16px;
+    padding: 10px 0;
+    width: 100%;
+    color: black;
+  }
+
+  /* Botones compactos */
+  .navbar__buttons {
+    margin-top: 20px; /* Ajustar margen superior para desplazar hacia abajo */
+    flex-direction: column;
+    gap: 10px;
+    width: 100%; /* Asegurar que se alineen correctamente */
+  }
+
+  .navbar__button {
+    font-size: 14px;
+    padding: 8px 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Usuario y menú desplegable */
+  .navbar__user-button {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
   }
 }

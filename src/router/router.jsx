@@ -47,12 +47,6 @@ export const router = createBrowserRouter([
         path: "/contacto",
         element: <Contacto />,
       },
-    ],
-  },
-  {
-    path: "/", 
-    element: <LayoutPrivado />,  
-    children: [
       {
         path: "/favoritos",  
         element: <Favoritos />,  
@@ -61,6 +55,13 @@ export const router = createBrowserRouter([
         path: "/ajustes",
         element: <UserSettings />,
       },
+    ],
+  },
+  {
+    path: "/", 
+    element: <LayoutPrivado />,  
+    children: [
+      
     ],
   },
 ]);

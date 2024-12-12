@@ -64,15 +64,15 @@ body {
   font-size: 18px;
   font-weight: bold;
   color: black;
-  background-color: #f9e4b7;
+  background-color: #E9BBC2;
   border: none;
-  cursor: pointer;
   text-align: center;
 }
 
 .auth__tabs__tab--active {
   background-color: #d99ea2;
   color: white;
+  font-size: 22px
 }
 
 .auth__form {
@@ -87,7 +87,7 @@ body {
 }
 
 .auth__form__input {
-  width: 86%;
+  width: 94.5%;
   padding: 10px;
   font-size: 16px;
   border: 2px solid #e1e0ff;
@@ -148,7 +148,7 @@ body {
 
 /* Animación de crecimiento y ajuste al cambiar entre Login y Register */
 .auth.auth--active {
-  width: 500px; /* Ajustamos el tamaño cuando el formulario está activo */
+  width: 500px; 
   padding: 30px;
 }
 

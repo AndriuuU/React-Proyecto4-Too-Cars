@@ -33,27 +33,29 @@ const Favoritos = () => {
   }
 
   return (
-    <div>
-      <h2>Mis Favoritos</h2>
-      <div className="cars__list">
+    <section>
+      <header>
+        <h2 className="cars__title">Mis Favoritos</h2>
+      </header>
+
+      <section className="cars__list">
         {favorites.length > 0 ? (
           currentFavorites.map((car) => (
-            <div key={car.id} className="car-card">
+            <article key={car.id} className="car-card">
               <Card
                 title={`${car.make} ${car.model}`}
                 image={car.image}
                 onClick={() => handleCardClick(car.id)}
               />
-            </div>
+            </article>
           ))
         ) : (
           <p>No tienes coches favoritos aún.</p>
         )}
-      </div>
+      </section>
 
-    
       {totalPages > 1 && (
-        <div className="pagination">
+        <footer className="pagination">
           {Array.from({ length: totalPages }, (_, index) => (
             <button
               key={index + 1}
@@ -63,9 +65,9 @@ const Favoritos = () => {
               {index + 1}
             </button>
           ))}
-        </div>
+        </footer>
       )}
-    </div>
+    </section>
   )
 }
 

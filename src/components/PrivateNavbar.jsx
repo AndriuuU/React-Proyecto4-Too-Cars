@@ -1,71 +1,68 @@
-import { NavLink, useNavigate } from "react-router-dom"
-import { useContext, useState, useEffect } from "react"
-import { UserContext } from "../context/UserContext"
-import { logOut } from "../config/Firebase"
-import "../style/main.scss"
+import { useState, useContext, useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
+import { auth } from "../config/Firebase";
+import "../style/main.scss";
+
+import logo from '../../public/img/logo.jpeg';
 
 const PrivateNavbar = () => {
-  const { user } = useContext(UserContext)
-  const navigate = useNavigate()
-  
-  // Estado para el modo oscuro
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   // Función para manejar el logout
   const handleLogout = async () => {
     try {
-      await logOut()
-      navigate("/login")
+      await auth.signOut();
+      navigate("/login");
     } catch (error) {
-      console.error("Error al cerrar sesión:", error)
+      console.error("Error al cerrar sesión:", error);
     }
-  }
+  };
+
+  // Función para alternar el menú desplegable
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
 
   // Función para alternar el modo oscuro y guardarlo en localStorage
   const toggleDarkMode = () => {
-    setIsDarkMode((prevMode) => !prevMode)
-    document.body.classList.toggle("dark-mode")
+    setIsDarkMode((prevMode) => !prevMode);
+    document.body.classList.toggle("dark-mode");
 
     // Guardar el estado de modo oscuro en localStorage
-    localStorage.setItem("isDarkMode", !isDarkMode)
-  }
+    localStorage.setItem("isDarkMode", !isDarkMode);
+  };
 
   // Comprobar el modo oscuro al cargar la página
   useEffect(() => {
-    const darkModePreference = localStorage.getItem("isDarkMode")
-
+    const darkModePreference = localStorage.getItem("isDarkMode");
+    
     // Si el modo oscuro está almacenado y es verdadero, activarlo
     if (darkModePreference === "true") {
-      setIsDarkMode(true)
-      document.body.classList.add("dark-mode")
+      setIsDarkMode(true);
+      document.body.classList.add("dark-mode");
     } else {
-      setIsDarkMode(false)
-      document.body.classList.remove("dark-mode")
+      setIsDarkMode(false);
+      document.body.classList.remove("dark-mode");
     }
-  }, [])
+  }, []);
 
   return (
-    <nav className="navbar private-navbar">
-      <div className="navbar__logo">
-        <NavLink to="/">
-          <img src="src/assets/img/logo.jpeg" alt="Logo" className="navbar__logo-image" />
-        </NavLink>
-      </div>
-      <ul className="navbar__links">
-        <li className="navbar__link-item">
+    <nav className="navbar">
+      <header className="navbar__logo">
+        <img src={logo} alt="Logo" className="navbar__logo-image" />
+        <ul className="navbar__links">
           <NavLink to="/" className="navbar__link">Inicio</NavLink>
-        </li>
-        <li className="navbar__link-item">
-          <NavLink to="/ajustes" className="navbar__link">Ajustes</NavLink>
-        </li>
-        <li className="navbar__link-item">
-          <NavLink to="/favoritos" className="navbar__link">Favoritos</NavLink>
-        </li>
-      </ul>
-      <div className="navbar__user-options">
-        <span className="navbar__username">{user?.displayName || "Usuario"}</span>
-        <button onClick={handleLogout} className="navbar__logout-button">Cerrar sesión</button>
-        
+          <NavLink to="/menu" className="navbar__link">Menu</NavLink>
+          {user && <NavLink to="/favoritos" className="navbar__link">Favoritos</NavLink>}
+          {user && <NavLink to="/ajustes" className="navbar__link">Ajustes</NavLink>}
+          <NavLink to="/contacto" className="navbar__link">Contacto</NavLink>
+        </ul>
+      </header>
+      <ul className="navbar__buttons">
         <li className="navbar__toggle">
           <label className="navbar__darkmode-label">
             <input
@@ -76,9 +73,28 @@ const PrivateNavbar = () => {
             />
           </label>
         </li>
-      </div>
+        {user ? (
+          <details className="navbar__user-menu">
+            <summary className="navbar__user-button">
+              {user.displayName || "Usuario"}
+            </summary>
+            <ul className={`navbar__dropdown-menu ${isDropdownOpen ? "navbar__dropdown-menu--visible" : ""}`}>
+              <li 
+                className="navbar__dropdown-item" 
+                onClick={handleLogout}>
+                Cerrar sesión
+              </li>
+            </ul>
+          </details>
+        ) : (
+          <>
+            <NavLink to="/login" className="navbar__button">Acceder</NavLink>
+            <NavLink to="/register" className="navbar__button">Registrar</NavLink>
+          </>
+        )}
+      </ul>
     </nav>
-  )
-}
+  );
+};
 
-export default PrivateNavbar
+export default PrivateNavbar;

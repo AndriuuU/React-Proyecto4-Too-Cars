@@ -1,5 +1,6 @@
 import React from 'react';
 import '../style/main.scss';  // Asegúrate de importar el archivo de CSS
+import coche from '../../public/img/cocheVolcado.png';
 
 const Error404 = () => {
   return (
@@ -15,7 +16,7 @@ const Error404 = () => {
         Parece que te has perdido, pero no te preocupes, vuelve al inicio y todo estará bien.
       </p>
       <img
-        src="https://example.com/car-image.jpg" // Reemplaza con tu imagen de coche
+        src={coche} // Reemplaza con tu imagen de coche
         alt="Coche"
         className="error-image"
       />
