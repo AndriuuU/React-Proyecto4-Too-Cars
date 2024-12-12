@@ -66,7 +66,7 @@ src/
 ```
 
 ## Validaciones
-En ek video no me he acorado de exponer las validaciones pero han sido hechas.
+En el video no me he acorado de exponer las validaciones pero han sido hechas.
 ![alt text](image.png)
 
 Tambien las validaciones de CSS
