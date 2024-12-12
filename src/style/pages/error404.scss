@@ -1,111 +1,158 @@
+// Modo Oscuro / Claro
+body {
+  background-color: $light-bg-color;
+  color: $light-text-color;
+  transition: background-color 0.5s ease, color 0.5s ease;
+
+  &.dark-mode {
+    background-color: $dark-bg-color;
+    color: $dark-text-color;
+  }
+}
 
 .error-404 {
-    text-align: center;
-    position: relative;
-    color: #333;
+  text-align: center;
+  position: relative;
+  color: $light-text-color;
+  background-color: $dark-bg-color;
+  padding: 4rem 1rem;
+  min-height: 66vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-title {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.3rem;
+  color: $color-primary;
+}
+
+.error-letter {
+  display: inline-block;
+  animation: letterAnimation 3s ease-in-out infinite alternate;
+  font-size: 4rem;
+  color: $color-accent;
+}
+
+.error-letter:nth-child(odd) {
+  animation-delay: 0.2s;
+}
+
+.error-letter:nth-child(even) {
+  animation-delay: 0.4s;
+}
+
+.error-message {
+  font-size: 1.2rem;
+  color: $color-grey;
+  margin-bottom: 2rem;
+  animation: messageAnimation 4s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+.error-image {
+  width: 250px;
+  height: auto;
+  margin-top: -2rem;
+  animation: carAnimation 6s ease-out forwards;
+}
+
+.error-button {
+  font-size: 1.2rem;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  background-color: $color-primary;
+  color: $color-light;
+  border-radius: $border-radius;
+  font-weight: bold;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  margin-top: 2rem;
+  box-shadow: $box-shadow-btn;
+  display: inline-block;
+  z-index: 1;
+}
+
+.error-button:hover {
+  transform: scale(1.1);
+  background-color: $color-secondary-hover;
+}
+
+.toggle-button {
+  padding: 10px 20px;
+  background-color: $color-primary;
+  color: $color-light;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 1.1rem;
+  box-shadow: $box-shadow-btn;
+  transition: background-color 0.3s;
+}
+
+.toggle-button:hover {
+  background-color: $color-secondary-hover;
+}
+
+// Animaciones
+@keyframes letterAnimation {
+  0% {
+    transform: translateY(0);
+    color: $color-accent;
   }
-  
-  .error-title {
-    font-size: 4rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: center;
-    gap: 0.3rem;
+  25% {
+    transform: translateY(-10px);
+    color: $color-secondary-hover;
   }
-  
-  .error-letter {
-    display: inline-block;
-    animation: letterAnimation 2s ease-in-out infinite alternate;
-    font-size: 4rem;
-    color: #e74c3c;
+  50% {
+    transform: translateY(10px);
+    color: $color-primary;
   }
-  
-  .error-letter:nth-child(odd) {
-    animation-delay: 0.2s;
+  75% {
+    transform: translateY(-10px);
+    color: $color-light;
   }
-  
-  .error-letter:nth-child(even) {
-    animation-delay: 0.4s;
+  100% {
+    transform: translateY(0);
+    color: $color-accent;
   }
-  
-  .error-message {
-    font-size: 1.2rem;
-    color: #555;
-    margin-bottom: 2rem;
-    animation: messageAnimation 3s ease-in-out infinite alternate;
+}
+
+@keyframes messageAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .error-image {
-    width: 300px;
-    height: auto;
-    margin-top: 3rem;
-    animation: carAnimation 4s ease-in-out infinite alternate;
+  50% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .error-button {
-    font-size: 1rem;
-    text-decoration: none;
-    padding: 1rem 2rem;
-    background-color: #3498db;
-    color: white;
-    border-radius: 30px;
-    font-weight: bold;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    margin-top: 2rem;
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  
-  .error-button:hover {
-    transform: scale(1.1);
-    background-color: #2980b9;
+}
+
+@keyframes carAnimation {
+  0% {
+    transform: translateY(-500px) rotate(0deg) scale(0.5); // Empieza fuera de la pantalla y pequeña
   }
-  
-  @keyframes letterAnimation {
-    0% {
-      transform: translateY(0);
-      color: #e74c3c;
-    }
-    25% {
-      transform: translateY(-10px);
-      color: #f39c12;
-    }
-    50% {
-      transform: translateY(10px);
-      color: #9b59b6;
-    }
-    75% {
-      transform: translateY(-10px);
-      color: #2ecc71;
-    }
-    100% {
-      transform: translateY(0);
-      color: #e74c3c;
-    }
+  25% {
+    transform: translateY(0) rotate(180deg) scale(1); // Llega al centro y gira una vez
   }
-  
-  @keyframes messageAnimation {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    50% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    100% {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
+  50% {
+    transform: translateY(0) rotate(360deg) scale(1); // Completa la primera rotación
   }
-  
-  @keyframes carAnimation {
-    0% {
-      transform: translateX(-500px);
-    }
-    50% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(500px);
-    }
+  75% {
+    transform: translateY(0) rotate(540deg) scale(1); // Rota por segunda vez
   }
+  100% {
+    transform: translateY(0) rotate(720deg) scale(1.3); // Termina la rotación y aumenta de tamaño
+  }
+}

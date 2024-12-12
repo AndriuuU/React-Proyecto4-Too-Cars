@@ -36,6 +36,18 @@
 
   }
 
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Luckiest Guy", cursive;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;  /* Esto asegura que la página ocupe al menos la altura completa de la ventana */
+  }
   body{
     font-family: "Luckiest Guy", cursive;   
     letter-spacing: 2px;

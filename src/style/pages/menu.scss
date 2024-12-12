@@ -56,15 +56,13 @@
   justify-content: center;
   gap: 10px;
   margin: 20px 0;
-  flex-wrap: wrap; /* Hacer que los botones se ajusten en pantallas pequeñas */
 }
 
-/* Botón de paginación */
 .menu__pagination__button {
-  background-color: #007bff; /* Cambiar colores por valores hexadecimales */
+  background-color: $color-secondary;
   border: none;
   border-radius: 5px;
-  color: #ffffff;
+  color: $color-light;
   padding: 10px 15px;
   cursor: pointer;
   font-size: 14px;
@@ -72,11 +70,11 @@
 }
 
 .menu__pagination__button:hover {
-  background-color: #0056b3;
+  background-color: $color-secondary-hover;
 }
 
 .menu__pagination__button--active {
-  background-color: #28a745;
+  background-color: $color-primary;
   font-weight: bold;
 }
 
